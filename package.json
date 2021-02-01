@@ -1,0 +1,25 @@
+{
+  "name": "sendgrid-responder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js localhost 3000",
+    "start": "node src/index.js",
+    "audit": "snyk test"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "6.4.0",
+    "body-parser": "1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "4.17.1",
+    "serverless": "1.46.1",
+    "serverless-http": "2.0.2",
+    "snyk": "1.192.4"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4",
+    "snyk": "^1.185.5"
+  },
+  "keywords": []
+}

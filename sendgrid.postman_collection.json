@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "6ef75d9b-521f-4650-bf2d-8a79753ccca7",
+		"name": "SendGrid",
+		"description": "Check the site url variable as it can point to\n\nhttp://localhost \n\nor      \n\nhttps://2zg6rbcxqk.execute-api.eu-west-1.amazonaws.com/dev\n\nor indeed from now.sh \n\nhttps://sendgrid-webhook-parser.solrevdev.now.sh\n\n\nAlso check the payload as that if failure type events are found *will send email*",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test service is running",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{root_url}}/",
+					"host": [
+						"{{root_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post events",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n   {\n      \"email\":\"example@test.com\",\n      \"timestamp\":1513299569,\n      \"smtp-id\":\"<14c5d75ce93.dfd.64b469@ismtpd-555>\",\n      \"event\":\"processed\",\n      \"category\":\"cat facts\",\n      \"sg_event_id\":\"sg_event_id\",\n      \"sg_message_id\":\"sg_message_id\"\n   },\n   {\n      \"email\":\"example@test.com\",\n      \"timestamp\":1513299569,\n      \"smtp-id\":\"<14c5d75ce93.dfd.64b469@ismtpd-555>\",\n      \"event\":\"deferred\",\n      \"category\":\"cat facts\",\n      \"sg_event_id\":\"sg_event_id\",\n      \"sg_message_id\":\"sg_message_id\",\n      \"response\":\"400 try again later\",\n      \"attempt\":\"5\"\n   },\n   {\n      \"email\":\"example@test.com\",\n      \"timestamp\":1513299569,\n      \"smtp-id\":\"<14c5d75ce93.dfd.64b469@ismtpd-555>\",\n      \"event\":\"delivered\",\n      \"category\":\"cat facts\",\n      \"sg_event_id\":\"sg_event_id\",\n      \"sg_message_id\":\"sg_message_id\",\n      \"response\":\"250 OK\"\n   },\n   {\n      \"email\":\"example@test.com\",\n      \"timestamp\":1513299569,\n      \"smtp-id\":\"<14c5d75ce93.dfd.64b469@ismtpd-555>\",\n      \"event\":\"open\",\n      \"category\":\"cat facts\",\n      \"sg_event_id\":\"sg_event_id\",\n      \"sg_message_id\":\"sg_message_id\",\n      \"useragent\":\"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP; .NET CLR 1.1.4322; .NET CLR 2.0.50727)\",\n      \"ip\":\"255.255.255.255\"\n   },\n   {\n      \"email\":\"example@test.com\",\n      \"timestamp\":1513299569,\n      \"smtp-id\":\"<14c5d75ce93.dfd.64b469@ismtpd-555>\",\n      \"event\":\"click\",\n      \"category\":\"cat facts\",\n      \"sg_event_id\":\"sg_event_id\",\n      \"sg_message_id\":\"sg_message_id\",\n      \"useragent\":\"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP; .NET CLR 1.1.4322; .NET CLR 2.0.50727)\",\n      \"ip\":\"255.255.255.255\",\n      \"url\":\"http://www.sendgrid.com/\"\n   }\n]\n\n"
+				},
+				"url": {
+					"raw": "{{root_url}}/event",
+					"host": [
+						"{{root_url}}"
+					],
+					"path": [
+						"event"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cef2d5cf-7a2d-4251-899e-94aa26b41278",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a891e603-e270-4ca2-aa74-dbc4118d00b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9621e294-6df0-4186-be00-047bee9a5d79",
+			"key": "root_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

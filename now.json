@@ -1,0 +1,20 @@
+{
+    "name": "sendgrid-webhook-parser",
+    "alias": "sendgrid-webhook-parser",
+    "version": 2,
+    "builds": [{
+        "src": "src/index.js",
+        "use": "@now/node-server"
+    }],
+    "routes": [{
+        "src": "/.*",
+        "dest": "src/index.js"
+    }],
+    "env": {
+        "SENDGRID_API_KEY": "@sendgrid_api_key",
+        "EMAIL_TO": "sales@foremost-magnets.com",
+        "EMAIL_SUBJECT": "Database email not sent - please check",
+        "EMAIL_FROM": "sales@foremost-magnets.com",
+        "EMAIL_CC": "john@foremost-magnets.com"
+    }
+}
